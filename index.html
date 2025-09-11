@@ -1,0 +1,2122 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beachscape Resorts - Tropik Lüks Tətil Mərkəzi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2C5F7D;
+            --secondary-color: #FF7F50;
+            --accent-color: #20B2AA;
+            --gold-color: #D4AF37;
+            --text-dark: #1A1A1A;
+            --text-light: #6B7280;
+            --white: #FFFFFF;
+            --background-light: #F8FAFC;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --gradient-primary: linear-gradient(135deg, #2C5F7D 0%, #20B2AA 100%);
+            --gradient-secondary: linear-gradient(135deg, #FF7F50 0%, #D4AF37 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px var(--shadow-light);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 8px 40px var(--shadow-medium);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        .book-btn {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 95, 125, 0.3);
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 95, 125, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
+                        url('https://images.unsplash.com/photo-1520637836862-4d197d17c895?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.3));
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(44, 95, 125, 0.4);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(44, 95, 125, 0.6);
+        }
+
+        .cta-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .features {
+            padding: 8rem 0;
+            background: var(--background-light);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-subtitle {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--shadow-light);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px var(--shadow-medium);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .rooms {
+            padding: 8rem 0;
+            background: white;
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px var(--shadow-light);
+            transition: all 0.4s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px var(--shadow-medium);
+        }
+
+        .room-image {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .room-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(44, 95, 125, 0.1), rgba(32, 178, 170, 0.1));
+        }
+
+        .room-badge {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .room-info {
+            padding: 2.5rem;
+        }
+
+        .room-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .room-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .room-type {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .room-price {
+            text-align: right;
+        }
+
+        .price-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .price-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .room-features {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .room-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .room-feature i {
+            color: var(--accent-color);
+            width: 16px;
+        }
+
+        .room-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .room-button {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .room-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 95, 125, 0.4);
+        }
+
+        .activities {
+            padding: 8rem 0;
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activities::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200"><path d="M0,100 Q150,150 300,100 T600,100 T900,100 T1200,100 L1200,0 L0,0 Z" fill="%23ffffff" opacity="0.05"/></svg>') repeat-x;
+            animation: wave 20s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(-100px); }
+        }
+
+        .activities .section-title,
+        .activities .section-subtitle {
+            color: white;
+        }
+
+        .activities .section-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .activity-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .activity-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .activity-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .activity-card h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .activity-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .gallery {
+            padding: 8rem 0;
+            background: var(--background-light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(44, 95, 125, 0.3), rgba(32, 178, 170, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .about {
+            padding: 8rem 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--background-light);
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .about-image {
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(44, 95, 125, 0.1), rgba(32, 178, 170, 0.1));
+        }
+
+        .contact {
+            padding: 8rem 0;
+            background: var(--background-light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-medium);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-right: 1.5rem;
+            width: 50px;
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+
+        .contact-item-content h4 {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px var(--shadow-light);
+        }
+
+        .contact-form h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--background-light);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 95, 125, 0.4);
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            color: #9CA3AF;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 95, 125, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9CA3AF;
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gradient-primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(44, 95, 125, 0.5);
+        }
+
+        @media (max-width: 1200px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 100px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 100px);
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 3rem;
+                transition: left 0.4s ease;
+                box-shadow: 0 10px 40px var(--shadow-medium);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .features-grid,
+            .rooms-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 0 1rem;
+                height: 90vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-primary,
+            .cta-secondary {
+                padding: 1rem 2.5rem;
+                font-size: 1rem;
+                width: 280px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .rooms-grid,
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card,
+            .room-card {
+                margin: 0;
+            }
+
+            .feature-card {
+                padding: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .room-info {
+                padding: 2rem;
+            }
+
+            .contact-item {
+                padding: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-umbrella-beach"></i>
+                Beachscape
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home">Ana Səhifə</a></li>
+                <li><a href="#features">Xidmətlər</a></li>
+                <li><a href="#rooms">Otaqlar</a></li>
+                <li><a href="#activities">Fəaliyyətlər</a></li>
+                <li><a href="#gallery">Qalereya</a></li>
+                <li><a href="#about">Haqqımızda</a></li>
+                <li><a href="#contact">Əlaqə</a></li>
+                <li><a href="#rooms" class="book-btn">Rezerv Et</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Tropik Lüks Tətil Mərkəzi</h1>
+            <p class="hero-subtitle">Kristal duru okean suları, ağ qum çimərlikləri və dünya standartlarında lüks xidmətlərlə dolu unudulmaz tropik macəraya başlayın. Beachscape Resorts-da hər an xüsudidir.</p>
+            <div class="hero-buttons">
+                <a href="#rooms" class="cta-primary">Otaqları Kəşf Et</a>
+                <a href="#gallery" class="cta-secondary">Qalereya</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Premium Xidmətlər</p>
+                <h2 class="section-title">Lüks Tətil Təcrübəsi</h2>
+                <p class="section-description">Dünya standartlarında xidmətlərlə tropik cənnətdə unudulmaz anlar yaşayın. Hər detal diqqətlə düşünülmüş və sizin rahatlığınız üçün hazırlanmışdır.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Özəl Çimərlik Klubu</h3>
+                    <p>1500 metr uzunluğunda özəl çimərlikdə kristal duru sularla həmsər olun. VIP çimərlik xidməti, şəxsi çadırlar və premium içkilər daxildir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3>24/7 Concierge Xidməti</h3>
+                    <p>Peşəkar concierge komandamız günün hər saatı sizin xidmətinizdədir. Transfer, tur və restoran rezervasiyalarından tutmuş özəl təcrübələrə qədər.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Beynəlxalq Spa Mərkəzi</h3>
+                    <p>3000 m² sahədə yerləşən lüks spa mərkəzimizdə tropik bitki yağları, mineral sular və qədim massaj texnikaları ilə canlanın.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Michelin Ulduzlu Mətbəx</h3>
+                    <p>Beynəlxalq tanınmış aşpazların hazırladığı ekskluziv yemək kartları. 7 restoran və 4 bar ilə qastonomik səyahət yaşayın.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Su Sporları Mərkəzi</h3>
+                    <p>Peşəkar təlimatçılar ilə dalış, sörf, paraglayding, jet-ski və daha çox su sporları. Bütün avadanlıq və təhlükəsizlik daxildir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-golf-ball"></i>
+                    </div>
+                    <h3>18-Deşikli Golf Sahəsi</h3>
+                    <p>Jack Nicklaus tərəfindən dizayn edilmiş championship golf sahəsi. Okean mənzərəli 18 deşik və professional golf akademiyası.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rooms" id="rooms">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Lüks Yaşam</p>
+                <h2 class="section-title">Premium Otaqlar və Villalar</h2>
+                <p class="section-description">Okean mənzərəli lüks otaqlarımızda və özəl villalarımızda tropik rahatlıq təcrübəsi yaşayın. Hər otaq xüsusi dizayn və premium amentitlərlə təchiz edilmişdir.</p>
+            </div>
+            <div class="rooms-grid">
+                <div class="room-card">
+                    <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')">
+                        <div class="room-badge">Ən Populyar</div>
+                    </div>
+                    <div class="room-info">
+                        <div class="room-header">
+                            <div>
+                                <h3>Okean Panorama Suite</h3>
+                                <p class="room-type">Lüks Suite - 85m²</p>
+                            </div>
+                            <div class="room-price">
+                                <div class="price-amount">$450</div>
+                                <div class="price-period">/ gecə</div>
+                            </div>
+                        </div>
+                        <div class="room-features">
+                            <div class="room-feature">
+                                <i class="fas fa-bed"></i>
+                                <span>King Bed</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-hot-tub"></i>
+                                <span>Jacuzzi</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-mountain"></i>
+                                <span>Okean Mənzərəsi</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-wifi"></i>
+                                <span>Pulsuz WiFi</span>
+                            </div>
+                        </div>
+                        <p class="room-description">280° okean mənzərəli lüks suite. Özəl terras, jacuzzi və butler xidməti ilə unudulmaz qalış təcrübəsi.</p>
+                        <button class="room-button">İndi Rezerv Et</button>
+                    </div>
+                </div>
+                
+                <div class="room-card">
+                    <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')">
+                        <div class="room-badge">Premium</div>
+                    </div>
+                    <div class="room-info">
+                        <div class="room-header">
+                            <div>
+                                <h3>Tropik Villa</h3>
+                                <p class="room-type">Özəl Villa - 150m²</p>
+                            </div>
+                            <div class="room-price">
+                                <div class="price-amount">$750</div>
+                                <div class="price-period">/ gecə</div>
+                            </div>
+                        </div>
+                        <div class="room-features">
+                            <div class="room-feature">
+                                <i class="fas fa-swimming-pool"></i>
+                                <span>Şəxsi Hovuz</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-couch"></i>
+                                <span>Yaşayış Otağı</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-car"></i>
+                                <span>Golf Arabası</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-user-tie"></i>
+                                <span>Butler Xidməti</span>
+                            </div>
+                        </div>
+                        <p class="room-description">Şəxsi hovuz və tropik bağla əhatə olunmuş lüks villa. 24/7 butler xidməti və premium amenitylər daxildir.</p>
+                        <button class="room-button">İndi Rezerv Et</button>
+                    </div>
+                </div>
+
+                <div class="room-card">
+                    <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')">
+                        <div class="room-badge">Romantik</div>
+                    </div>
+                    <div class="room-info">
+                        <div class="room-header">
+                            <div>
+                                <h3>Sahil Bungalovu</h3>
+                                <p class="room-type">Overwater Bungalow - 65m²</p>
+                            </div>
+                            <div class="room-price">
+                                <div class="price-amount">$580</div>
+                                <div class="price-period">/ gecə</div>
+                            </div>
+                        </div>
+                        <div class="room-features">
+                            <div class="room-feature">
+                                <i class="fas fa-water"></i>
+                                <span>Su Üzərində</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-glass-cheers"></i>
+                                <span>Şərab Soyuducu</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-sun"></i>
+                                <span>Gün Doğuşu</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-fish"></i>
+                                <span>Balıq Müşahidəsi</span>
+                            </div>
+                        </div>
+                        <p class="room-description">Su üzərində inşa edilmiş romantik bungalow. Şüşə döşəmə ilə dəniz həyatını müşahidə edin və gün doğuşunu izləyin.</p>
+                        <button class="room-button">İndi Rezerv Et</button>
+                    </div>
+                </div>
+
+                <div class="room-card">
+                    <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')">
+                        <div class="room-badge">VIP</div>
+                    </div>
+                    <div class="room-info">
+                        <div class="room-header">
+                            <div>
+                                <h3>Presidential Suite</h3>
+                                <p class="room-type">Prezident Suiti - 200m²</p>
+                            </div>
+                            <div class="room-price">
+                                <div class="price-amount">$1200</div>
+                                <div class="price-period">/ gecə</div>
+                            </div>
+                        </div>
+                        <div class="room-features">
+                            <div class="room-feature">
+                                <i class="fas fa-crown"></i>
+                                <span>VIP Xidmət</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-helicopter"></i>
+                                <span>Helikopter Transfer</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-champagne-glasses"></i>
+                                <span>Premium İçkilər</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-concierge-bell"></i>
+                                <span>Şəxsi Concierge</span>
+                            </div>
+                        </div>
+                        <p class="room-description">Ən lüks suite təcrübəmiz. Şəxsi concierge, limuzin transfer və unlimited premium içkilər daxildir.</p>
+                        <button class="room-button">İndi Rezerv Et</button>
+                    </div>
+                </div>
+
+                <div class="room-card">
+                    <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')">
+                        <div class="room-badge">Ailə</div>
+                    </div>
+                    <div class="room-info">
+                        <div class="room-header">
+                            <div>
+                                <h3>Ailə Villa</h3>
+                                <p class="room-type">3 Otaqlı Villa - 180m²</p>
+                            </div>
+                            <div class="room-price">
+                                <div class="price-amount">$680</div>
+                                <div class="price-period">/ gecə</div>
+                            </div>
+                        </div>
+                        <div class="room-features">
+                            <div class="room-feature">
+                                <i class="fas fa-users"></i>
+                                <span>8 nəfər</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-gamepad"></i>
+                                <span>Oyun Otağı</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-kitchen-set"></i>
+                                <span>Tam Mətbəx</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-baby"></i>
+                                <span>Uşaq Xidmətləri</span>
+                            </div>
+                        </div>
+                        <p class="room-description">Böyük ailələr üçün mükəmməl villa. Uşaq oyun sahəsi, tam təchizatlı mətbəx və pulsuz uşaq baxıcısı xidməti.</p>
+                        <button class="room-button">İndi Rezerv Et</button>
+                    </div>
+                </div>
+
+                <div class="room-card">
+                    <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')">
+                        <div class="room-badge">Yeni</div>
+                    </div>
+                    <div class="room-info">
+                        <div class="room-header">
+                            <div>
+                                <h3>Garden Suite</h3>
+                                <p class="room-type">Bağ Suiti - 70m²</p>
+                            </div>
+                            <div class="room-price">
+                                <div class="price-amount">$380</div>
+                                <div class="price-period">/ gecə</div>
+                            </div>
+                        </div>
+                        <div class="room-features">
+                            <div class="room-feature">
+                                <i class="fas fa-leaf"></i>
+                                <span>Tropik Bağ</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-bath"></i>
+                                <span>Rain Shower</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-coffee"></i>
+                                <span>Nespresso</span>
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-dumbbell"></i>
+                                <span>Mini Gym</span>
+                            </div>
+                        </div>
+                        <p class="room-description">Tropik bağlarla əhatə olunmuş sakitlik dolu suite. Rain shower, Nespresso maşını və mini fitness sahəsi.</p>
+                        <button class="room-button">İndi Rezerv Et</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="activities" id="activities">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Macəra və Əyləncə</p>
+                <h2 class="section-title">Unudulmaz Təcrübələr</h2>
+                <p class="section-description">Adrenalin dolu su sporlarından sakitlik verən spa müalicələrinə qədər hər zövqə uyğun aktivitələr. Peşəkar təlimatçılarımız sizə yardım edəcək.</p>
+            </div>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-icon">🏄‍♂️</div>
+                    <h3>Professional Sörf Məktəbi</h3>
+                    <p>Dünya çempiyonu sörf üstadları ilə dərs alın və mükəmməl dalğaları fəth edin.</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🤿</div>
+                    <h3>PADI Dalış Kursları</h3>
+                    <p>Beynəlxalq sertifikatla rəngarəng coral riflərini və tropik balıqları kəşf edin.</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🚁</div>
+                    <h3>Helikopter Turları</h3>
+                    <p>Tropik adanın nəfəsaçan mənzərələrini quş baxışı ilə seyr edin.</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🎣</div>
+                    <h3>Dərin Dəniz Balıq Tutma</h3>
+                    <p>Professional gəmilər ilə marlin, tuna və digər böyük balıqları tutun.</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🧘‍♀️</div>
+                    <h3>Sunrise Yoga & Meditasiya</h3>
+                    <p>Gün doğuşunda çimərlikdə professional yoga və mindfulness seansları.</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">⛳</div>
+                    <h3>Championship Golf</h3>
+                    <p>Jack Nicklaus dizaynı 18 deşikli sahədə PGA professional ilə golf dərsləri.</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🌅</div>
+                    <h3>Sunset Yacht Kruizları</h3>
+                    <p>Lüks yaxta ilə günəş batımı kruizları. Şampan və canape xidməti daxildir.</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">🏊‍♀️</div>
+                    <h3>Aqua Aerobics</h3>
+                    <p>Professional fitness təlimatçıları ilə su içində əyləncəli idman.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Resort Mənzərələri</p>
+                <h2 class="section-title">Tropik Cənnət</h2>
+                <p class="section-description">Resortumuzun nəfəsaçan mənzərələri və lüks xidmətlərindən bəzi kadrlar. Kristal duru sular, tropik bağlar və lüks yaşam sahələri.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1520637736862-4d197d17c895?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Beachscape Resorts Haqqında</h2>
+                    <p>2010-cu ildən bəri tropik tətil sahəsində öncü olan Beachscape Resorts, dünya standartlarında xidmət və unudulmaz təcrübələr təqdim edir. 300 hektarlıq tropik cənnətimiz kristal duru okean suları ilə həmsərdir.</p>
+                    <p>Award-winning dizayn və architecture ilə yaradılmış resortumuz, sustainable tourism prinsiplərinə uyğun şəkildə təbiətlə harmoniya içində inşa edilmişdir. Local community ilə əməkdaşlıqda authentic cultural experiences təqdim edirik.</p>
+                    <p>200+ international staff üzvümüz 50+ dildə xidmət göstərərək, hər qonağımızın unique ehtiyaclarına cavab verir. Forbes 5-Star və AAA Five Diamond mükafatları qazanmış resortumuz, luxury hospitality standartlarını yenidən təyin edir.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">İllik Təcrübə</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Qonaq Məmnuniyyəti</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">250</div>
+                            <div class="stat-label">Lüks Otaq</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">F&B Məkanları</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Bizimlə Əlaqə</p>
+                <h2 class="section-title">Rezervasiya və Məlumat</h2>
+                <p class="section-description">24/7 rezervasiya və müştəri xidmətlərimiz ilə istədiğiniz zaman bizimlə əlaqə saxlayın. Peşəkar komandamız sizə kömək etməkdən məmnun olacaq.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-item-content">
+                            <h4>Resort Ünvanı</h4>
+                            <p>Beachscape Premium Resort<br>Paradise Island, Crystal Bay<br>Maldives Ocean, PC 12345</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-item-content">
+                            <h4>Rezervasiya</h4>
+                            <p>+994 12 345 67 89<br>+994 55 987 65 43<br>24/7 Xidmət</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-item-content">
+                            <h4>Email</h4>
+                            <p>reservations@beachscape.com<br>concierge@beachscape.com<br>info@beachscape.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-item-content">
+                            <h4>İş Saatları</h4>
+                            <p>Check-in: 15:00<br>Check-out: 12:00<br>Reception: 24/7</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Rezervasiya Sorğusu</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="fullName">Ad və Soyad *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon Nömrəsi</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkIn">Giriş Tarixi</label>
+                            <input type="date" id="checkIn" name="checkIn">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkOut">Çıxış Tarixi</label>
+                            <input type="date" id="checkOut" name="checkOut">
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Qonaq Sayı</label>
+                            <select id="guests" name="guests">
+                                <option value="1">1 Qonaq</option>
+                                <option value="2">2 Qonaq</option>
+                                <option value="3">3 Qonaq</option>
+                                <option value="4">4 Qonaq</option>
+                                <option value="5+">5+ Qonaq</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomType">Otaq Tipi</label>
+                            <select id="roomType" name="roomType">
+                                <option value="">Otaq tipini seçin</option>
+                                <option value="garden-suite">Garden Suite</option>
+                                <option value="ocean-suite">Okean Panorama Suite</option>
+                                <option value="overwater">Sahil Bungalovu</option>
+                                <option value="family-villa">Ailə Villa</option>
+                                <option value="tropical-villa">Tropik Villa</option>
+                                <option value="presidential">Presidential Suite</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Xüsusi Tələblər</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Xüsusi tələblərinizi, alergiyanı və ya digər məlumatları qeyd edin..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            <i class="fas fa-paper-plane"></i>
+                            Rezervasiya Sorğusu Göndər
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Beachscape Resorts</h3>
+                    <p>Tropik cənnətdə lüks və rahatlığın mükəmməl birləşimi. 15 illik təcrübə ilə dünya standartlarında hospitality xidməti təqdim edirik.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Tez Keçidlər</h3>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-home"></i> Ana Səhifə</a></li>
+                        <li><a href="#features"><i class="fas fa-star"></i> Xidmətlər</a></li>
+                        <li><a href="#rooms"><i class="fas fa-bed"></i> Otaqlar</a></li>
+                        <li><a href="#activities"><i class="fas fa-swimmer"></i> Fəaliyyətlər</a></li>
+                        <li><a href="#gallery"><i class="fas fa-images"></i> Qalereya</a></li>
+                        <li><a href="#about"><i class="fas fa-info-circle"></i> Haqqımızda</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Xidmətlər</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-calendar-check"></i> Online Rezervasiya</a></li>
+                        <li><a href="#"><i class="fas fa-spa"></i> Spa & Wellness</a></li>
+                        <li><a href="#"><i class="fas fa-utensils"></i> Restoranlar</a></li>
+                        <li><a href="#"><i class="fas fa-golf-ball"></i> Golf Sahəsi</a></li>
+                        <li><a href="#"><i class="fas fa-water"></i> Su Sporları</a></li>
+                        <li><a href="#"><i class="fas fa-car"></i> Transfer Xidməti</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Əlaqə Məlumatları</h3>
+                    <ul>
+                        <li><a href="tel:+994123456789"><i class="fas fa-phone"></i> +994 12 345 67 89</a></li>
+                        <li><a href="mailto:info@beachscape.com"><i class="fas fa-envelope"></i> info@beachscape.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Paradise Island, Crystal Bay</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> 24/7 Müştəri Xidməti</a></li>
+                        <li><a href="#"><i class="fas fa-certificate"></i> Forbes 5-Star Resort</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Beachscape Premium Resorts. Bütün hüquqlar qorunur. | 
+                   <strong>Developed by:</strong> 
+                   <a href="mailto:nurlanmammadli2@gmail.com" style="color: var(--accent-color);">Nurlan Məmmədli</a> | 
+                   <a href="https://www.linkedin.com/in/nurlan-məmmədli-b6a55b308" target="_blank" style="color: var(--accent-color);">LinkedIn Profile</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#home" class="back-to-top" id="backToTop" aria-label="Yuxarı qayıt">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        class NavigationController {
+            constructor() {
+                this.navbar = document.getElementById('navbar');
+                this.hamburger = document.getElementById('hamburger');
+                this.navMenu = document.getElementById('nav-menu');
+                this.backToTop = document.getElementById('backToTop');
+                
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.updateNavOnScroll();
+            }
+
+            setupEventListeners() {
+                this.hamburger.addEventListener('click', () => this.toggleMobileMenu());
+                
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => this.closeMobileMenu());
+                });
+
+                let ticking = false;
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            this.updateNavOnScroll();
+                            this.updateBackToTop();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+
+                this.backToTop.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            toggleMobileMenu() {
+                const isActive = this.navMenu.classList.contains('active');
+                
+                if (isActive) {
+                    this.closeMobileMenu();
+                } else {
+                    this.openMobileMenu();
+                }
+            }
+
+            openMobileMenu() {
+                this.navMenu.classList.add('active');
+                this.hamburger.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const spans = this.hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            }
+
+            closeMobileMenu() {
+                this.navMenu.classList.remove('active');
+                this.hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                const spans = this.hamburger.querySelectorAll('span');
+                spans.forEach(span => {
+                    span.style.transform = '';
+                    span.style.opacity = '';
+                });
+            }
+
+            updateNavOnScroll() {
+                const scrollY = window.pageYOffset;
+                
+                if (scrollY > 100) {
+                    this.navbar.classList.add('scrolled');
+                } else {
+                    this.navbar.classList.remove('scrolled');
+                }
+            }
+
+            updateBackToTop() {
+                const scrollY = window.pageYOffset;
+                
+                if (scrollY > 500) {
+                    this.backToTop.classList.add('show');
+                } else {
+                    this.backToTop.classList.remove('show');
+                }
+            }
+        }
+
+        class SmoothScroll {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        const targetId = anchor.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            const headerOffset = 100;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+            }
+        }
+
+        class ContactFormHandler {
+            constructor() {
+                this.form = document.getElementById('contactForm');
+                this.init();
+            }
+
+            init() {
+                if (this.form) {
+                    this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+                    this.setupDateValidation();
+                }
+            }
+
+            setupDateValidation() {
+                const checkInInput = document.getElementById('checkIn');
+                const checkOutInput = document.getElementById('checkOut');
+                
+                if (checkInInput && checkOutInput) {
+                    const today = new Date().toISOString().split('T')[0];
+                    checkInInput.min = today;
+                    checkOutInput.min = today;
+
+                    checkInInput.addEventListener('change', () => {
+                        const checkInDate = new Date(checkInInput.value);
+                        checkInDate.setDate(checkInDate.getDate() + 1);
+                        checkOutInput.min = checkInDate.toISOString().split('T')[0];
+                        
+                        if (checkOutInput.value && new Date(checkOutInput.value) <= new Date(checkInInput.value)) {
+                            checkOutInput.value = '';
+                        }
+                    });
+                }
+            }
+
+            handleSubmit(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this.form);
+                const data = Object.fromEntries(formData);
+                
+                this.showLoading();
+                
+                setTimeout(() => {
+                    this.showSuccess();
+                    this.form.reset();
+                }, 2000);
+            }
+
+            showLoading() {
+                const submitBtn = this.form.querySelector('.submit-button');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Göndərilir...';
+                submitBtn.disabled = true;
+            }
+
+            showSuccess() {
+                const submitBtn = this.form.querySelector('.submit-button');
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Uğurla Göndərildi!';
+                submitBtn.style.background = 'linear-gradient(45deg, #10B981, #059669)';
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Rezervasiya Sorğusu Göndər';
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '';
+                }, 3000);
+                
+                this.showNotification('Təşəkkür edirik! Rezervasiya sorğunuz uğurla göndərildi. 24 saat ərzində sizinlə əlaqə saxlayacağıq.', 'success');
+            }
+
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `notification notification-${type}`;
+                notification.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 100px;
+                        right: 20px;
+                        background: ${type === 'success' ? '#10B981' : '#3B82F6'};
+                        color: white;
+                        padding: 1rem 2rem;
+                        border-radius: 10px;
+                        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+                        z-index: 10000;
+                        animation: slideInRight 0.5s ease;
+                        max-width: 400px;
+                    ">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}" style="margin-right: 0.5rem;"></i>
+                        ${message}
+                    </div>
+                `;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOutRight 0.5s ease';
+                    setTimeout(() => notification.remove(), 500);
+                }, 5000);
+            }
+        }
+
+        class RoomBookingHandler {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                document.querySelectorAll('.room-button').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const roomCard = e.target.closest('.room-card');
+                        const roomName = roomCard.querySelector('h3').textContent;
+                        const roomPrice = roomCard.querySelector('.price-amount').textContent;
+                        
+                        this.showBookingModal(roomName, roomPrice);
+                    });
+                });
+            }
+
+            showBookingModal(roomName, roomPrice) {
+                const modal = document.createElement('div');
+                modal.className = 'booking-modal';
+                modal.innerHTML = `
+                    <div class="modal-overlay" style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.8);
+                        z-index: 10000;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 2rem;
+                    ">
+                        <div class="modal-content" style="
+                            background: white;
+                            border-radius: 20px;
+                            padding: 3rem;
+                            max-width: 500px;
+                            width: 100%;
+                            position: relative;
+                            animation: modalFadeIn 0.3s ease;
+                        ">
+                            <button class="modal-close" style="
+                                position: absolute;
+                                top: 1rem;
+                                right: 1rem;
+                                background: none;
+                                border: none;
+                                font-size: 1.5rem;
+                                cursor: pointer;
+                                color: #6B7280;
+                            ">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Rezervasiya</h3>
+                            <p style="color: var(--text-light); margin-bottom: 2rem;">
+                                <strong>${roomName}</strong><br>
+                                <span style="color: var(--primary-color); font-size: 1.2rem;">${roomPrice} / gecə</span>
+                            </p>
+                            <div style="text-align: center;">
+                                <a href="#contact" class="cta-primary" style="
+                                    display: inline-block;
+                                    margin-bottom: 1rem;
+                                    text-decoration: none;
+                                ">Rezervasiya Formu</a>
+                                <br>
+                                <small style="color: var(--text-light);">və ya</small>
+                                <br><br>
+                                <a href="tel:+994123456789" style="
+                                    color: var(--accent-color);
+                                    text-decoration: none;
+                                    font-weight: 600;
+                                ">
+                                    <i class="fas fa-phone"></i> +994 12 345 67 89
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                document.body.style.overflow = 'hidden';
+                
+                modal.querySelector('.modal-close').addEventListener('click', () => this.closeModal(modal));
+                modal.querySelector('.modal-overlay').addEventListener('click', (e) => {
+                    if (e.target === modal.querySelector('.modal-overlay')) {
+                        this.closeModal(modal);
+                    }
+                });
+                
+                modal.querySelector('a[href="#contact"]').addEventListener('click', () => {
+                    this.closeModal(modal);
+                });
+            }
+
+            closeModal(modal) {
+                modal.style.animation = 'modalFadeOut 0.3s ease';
+                document.body.style.overflow = '';
+                setTimeout(() => modal.remove(), 300);
+            }
+        }
+
+        class AnimationController {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                            entry.target.style.opacity = '1';
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.feature-card, .room-card, .activity-card, .gallery-item').forEach(element => {
+                    element.style.opacity = '0';
+                    observer.observe(element);
+                });
+            }
+        }
+
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            
+            @keyframes modalFadeIn {
+                from { opacity: 0; transform: scale(0.9); }
+                to { opacity: 1; transform: scale(1); }
+            }
+            
+            @keyframes modalFadeOut {
+                from { opacity: 1; transform: scale(1); }
+                to { opacity: 0; transform: scale(0.9); }
+            }
+            
+            .form-group select {
+                width: 100%;
+                padding: 1.2rem;
+                border: 2px solid #E5E7EB;
+                border-radius: 12px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                background: var(--background-light);
+                color: var(--text-dark);
+                cursor: pointer;
+            }
+            
+            .form-group select:focus {
+                outline: none;
+                border-color: var(--accent-color);
+                background: white;
+                box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.1);
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new NavigationController();
+            new SmoothScroll();
+            new ContactFormHandler();
+            new RoomBookingHandler();
+            new AnimationController();
+            
+            const currentYear = new Date().getFullYear();
+            document.querySelector('.footer-bottom p').innerHTML = 
+                document.querySelector('.footer-bottom p').innerHTML.replace('2025', currentYear);
+        });
+
+        const observerLazy = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.bg) {
+                        img.style.backgroundImage = `url(${img.dataset.bg})`;
+                        observerLazy.unobserve(img);
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.gallery-item[style*="background-image"]').forEach(item => {
+            const bgUrl = item.style.backgroundImage.match(/url\("(.+)"\)/)?.[1];
+            if (bgUrl) {
+                item.dataset.bg = bgUrl;
+                item.style.backgroundImage = 'none';
+                observerLazy.observe(item);
+            }
+        });
+    </script>
+</body>
+</html>
