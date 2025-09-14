@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Classic Fruit Slots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffd700 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: #ffd700;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo::before {
+            content: "🎰";
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .play-btn {
+            background: linear-gradient(45deg, #ff6b35, #ffd700);
+            color: #2c1810;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            color: #ffd700;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            color: #2c1810;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+            to { text-shadow: 2px 2px 20px rgba(255, 215, 0, 0.6); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .features {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c1810;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #2c1810;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .statistics {
+            padding: 80px 20px;
+            background: rgba(44, 24, 16, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: linear-gradient(145deg, #8b4513, #a0522d);
+            color: #ffd700;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateY(0deg);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: perspective(1000px) rotateY(10deg) scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .testimonials {
+            padding: 80px 20px;
+            background: rgba(44, 24, 16, 0.05);
+        }
+
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: "💬";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 100px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6b35, #ffd700);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #2c1810;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            color: #8b4513;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background: linear-gradient(90deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
+            color: #ffd700;
+            padding: 50px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        .responsible-gaming {
+            background: rgba(255, 107, 53, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #ff6b35;
+        }
+
+        .responsible-gaming h3 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #8b4513;
+            padding-top: 20px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 992px) {
+            .navbar { flex-direction: column; gap: 20px; }
+            .nav-links { gap: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-links { flex-direction: column; gap: 20px; }
+        }
+
+        @media (max-width: 576px) {
+            .hero { padding: 40px 20px; }
+            .hero h1 { font-size: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .navbar { padding: 0 15px; }
+            .logo { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">Classic Fruit Slots</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="features.html" style="color: #fff; text-shadow: 0 0 10px #ffd700;">Features</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="index.html" class="play-btn">Back to Home</a>
+            <div class="mobile-menu">☰</div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>✨ Features</h1>
+        <p>All features and technical details of our platform</p>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Platform Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🎰</span>
+                    <h3>Classic Slot Machines</h3>
+                    <p>Experience nostalgic gaming with traditional fruit symbols. 3-reel classic slot machine design.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🍒</span>
+                    <h3>Fruit Symbols</h3>
+                    <p>Cherry, plum, watermelon, grape and other colorful fruits. Each symbol has its own special value.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Retro Design</h3>
+                    <p>Feel the casino atmosphere of the 70s-80s. Nostalgic colors and design elements.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🔊</span>
+                    <h3>Sound Effects</h3>
+                    <p>Exciting experience with realistic casino sounds. Spin sounds and victory melodies.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Fast Loading</h3>
+                    <p>Instant loading and fast game performance. No waiting time.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🏆</span>
+                    <h3>Bonus System</h3>
+                    <p>Long-term gaming pleasure with demo credits. You can always start over.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="statistics">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: #2c1810;">🔧 Technical Features</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">HTML5</div>
+                        <div class="stat-label">Modern Technology</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">60 FPS</div>
+                        <div class="stat-label">High Performance</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Mobile</div>
+                        <div class="stat-label">Responsive Design</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">PWA</div>
+                        <div class="stat-label">Progressive Web App</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Additional Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🎮</span>
+                    <h3>Keyboard Support</h3>
+                    <p>You can also play with Space key. Full keyboard support and comfortable control.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📱</span>
+                    <h3>Mobile Optimization</h3>
+                    <p>Works perfectly on all mobile devices. Touch-friendly interface and responsive design.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🌐</span>
+                    <h3>Browser Support</h3>
+                    <p>Perfect compatibility with Chrome, Firefox, Safari, Edge and other modern browsers.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🔒</span>
+                    <h3>Security</h3>
+                    <p>100% safe demo mode. No personal information or money required.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3>Simple Interface</h3>
+                    <p>User-friendly design and simple navigation. Everyone can use it easily.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚙️</span>
+                    <h3>Automatic Updates</h3>
+                    <p>Always use the latest version with automatic update system.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: #2c1810;">⭐ Reviews About Features</h2>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                                "Mobile version works very well. When I play on phone, there are no problems. 
+                                All features work smoothly and performance is high."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">EQ</div>
+                            <div class="author-info">
+                                    <h4>Emil Qasımov</h4>
+                                    <p>Mobile user</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                                "Retro design is very beautiful. There is really old casino atmosphere. 
+                                Sound effects also feel like real casino. Very quality work done."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">NM</div>
+                            <div class="author-info">
+                                    <h4>Nicat Məhərrəmov</h4>
+                                    <p>Design enthusiast</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">
+                                "Playing with Space key is very comfortable. Keyboard support is great addition. 
+                                Performance is also very good, no lag at all."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AR</div>
+                            <div class="author-info">
+                                    <h4>Anar Rəhimov</h4>
+                                    <p>PC user</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="text-align: center; padding: 40px;">
+        <a href="index.html" class="play-btn">Back to Home</a>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="games.html">Games</a>
+                <a href="features.html">Features</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <div class="responsible-gaming">
+                <h3>🛡️ Responsible Gaming</h3>
+                <p>If you think your gaming habits are problematic, seek help from appropriate specialists and take a break from gaming activities. This platform only offers demo games for entertainment purposes.</p>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Classic Fruit Slots. All rights reserved. | 18+ Age Restriction | Play Responsibly</p>
+                <p>This site is designed for demo purposes and has no real money risk.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const style = document.createElement('style');
+            style.textContent = `
+                @media (max-width: 992px) {
+                    .nav-links {
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        background: linear-gradient(90deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
+                        flex-direction: column;
+                        padding: 20px;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                        display: none;
+                    }
+                    
+                    .nav-links.active {
+                        display: flex !important;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        setTimeout(() => {
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(45deg, #ffd700, #ff6b35);
+                    color: #2c1810;
+                    padding: 30px;
+                    border-radius: 20px;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    text-align: center;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                    z-index: 1000;
+                    animation: bounce 0.5s ease;
+                ">
+                    ✨ Platform features ✨
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+        }, 1000);
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% { transform: translate(-50%, -50%) translateY(0); }
+                40% { transform: translate(-50%, -50%) translateY(-20px); }
+                60% { transform: translate(-50%, -50%) translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
