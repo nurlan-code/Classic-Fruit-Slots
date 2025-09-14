@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Classic Fruit Slots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffd700 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: #ffd700;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo::before {
+            content: "🎰";
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .play-btn {
+            background: linear-gradient(45deg, #ff6b35, #ffd700);
+            color: #2c1810;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            color: #ffd700;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            color: #2c1810;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+            to { text-shadow: 2px 2px 20px rgba(255, 215, 0, 0.6); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .features {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            padding: 60px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            margin: 0 auto;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: "👨‍💻";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 150px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .developer-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .developer-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #ff6b35, #ffd700);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #2c1810;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .developer-details h2 {
+            color: #2c1810;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .developer-details h3 {
+            color: #8b4513;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .contact-item {
+            background: rgba(139, 69, 19, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border-left: 5px solid #8b4513;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .contact-item h4 {
+            color: #8b4513;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-item p {
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .project-info {
+            background: rgba(139, 69, 19, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border-left: 6px solid #8b4513;
+        }
+
+        .project-info h3 {
+            color: #8b4513;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-info h3::before {
+            content: "🎯";
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+
+        .project-info p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .statistics {
+            padding: 80px 20px;
+            background: rgba(44, 24, 16, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: linear-gradient(145deg, #8b4513, #a0522d);
+            color: #ffd700;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateY(0deg);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: perspective(1000px) rotateY(10deg) scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .game-rules {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .rules-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .rule-item {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+            margin-bottom: 25px;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 6px solid #ff6b35;
+            transition: all 0.3s ease;
+        }
+
+        .rule-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .rule-title {
+            color: #8b4513;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .rule-title::before {
+            content: "🎯";
+            margin-right: 15px;
+            font-size: 1.8rem;
+        }
+
+        .rule-description {
+            color: #333;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            background: linear-gradient(90deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
+            color: #ffd700;
+            padding: 50px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        .responsible-gaming {
+            background: rgba(255, 107, 53, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #ff6b35;
+        }
+
+        .responsible-gaming h3 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #8b4513;
+            padding-top: 20px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .about-card { padding: 40px; }
+            .developer-info { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 992px) {
+            .navbar { flex-direction: column; gap: 20px; }
+            .nav-links { gap: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .footer-links { flex-direction: column; gap: 20px; }
+            .contact-info { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 576px) {
+            .hero { padding: 40px 20px; }
+            .hero h1 { font-size: 2rem; }
+            .about-card { padding: 30px; }
+            .developer-avatar { width: 100px; height: 100px; font-size: 40px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .navbar { padding: 0 15px; }
+            .logo { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">Classic Fruit Slots</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="about.html" style="color: #fff; text-shadow: 0 0 10px #ffd700;">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="index.html" class="play-btn">Back to Home</a>
+            <div class="mobile-menu">☰</div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>👨‍💻 About Us</h1>
+        <p>Information about the team behind our platform and the project</p>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="about-card">
+                <div class="about-content">
+                    <div class="developer-info">
+                        <div class="developer-avatar">NM</div>
+                        <div class="developer-details">
+                            <h2>Məmmədli Nurlan</h2>
+                            <h3>Frontend Developer</h3>
+                        </div>
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <h4>Email</h4>
+                            <p><a href="mailto:nurlanmammadli2@gmail.com">nurlanmammadli2@gmail.com</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">💼</span>
+                            <h4>LinkedIn</h4>
+                            <p><a href="https://www.linkedin.com/in/nurlan-məmmədli-b6a55b308" target="_blank">Visit Profile</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🎯</span>
+                            <h4>Specialization</h4>
+                            <p>Frontend Development</p>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🌍</span>
+                            <h4>Location</h4>
+                            <p>Azerbaijan</p>
+                        </div>
+                    </div>
+
+                    <div class="project-info">
+                        <h3>About the Project</h3>
+                        <p>
+                            This site is the 4th day of the 30-day demo social casino/slot site design series. 
+                            The goal is for people to have fun experience in demo format so they don't spend money 
+                            in real casinos.
+                        </p>
+                        <p>
+                            Retro casino atmosphere has been created with classic fruit slots theme. 
+                            This platform is completely free and designed for demo purposes.
+                        </p>
+                        <p>
+                            The project is developed with HTML5, CSS3 and JavaScript technologies. 
+                            Developed with responsive design and according to modern web standards.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="statistics">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: #2c1810;">🛠️ Development Information</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                        <div class="stat-label">Day #4/30</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2025</div>
+                        <div class="stat-label">Development Year</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">HTML5</div>
+                        <div class="stat-label">Technology</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Demo</div>
+                        <div class="stat-label">Purpose</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="game-rules">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: #2c1810;">🎯 Project Purpose</h2>
+            <div class="rules-container">
+                <div class="rule-item">
+                        <div class="rule-title">Demo Casino Experience</div>
+                        <div class="rule-description">
+                            People can experience the excitement of casino games without spending real money. 
+                            This provides safe and risk-free entertainment.
+                        </div>
+                </div>
+                <div class="rule-item">
+                        <div class="rule-title">Nostalgic Feeling</div>
+                        <div class="rule-description">
+                            Nostalgic atmosphere of classic casino slot machines has been created. 
+                            We present the casino atmosphere of the 70s-80s with modern web technology.
+                        </div>
+                </div>
+                <div class="rule-item">
+                        <div class="rule-title">Educational Purpose</div>
+                        <div class="rule-description">
+                            To apply and learn various web design and development techniques practically 
+                            within the framework of the 30-day series.
+                        </div>
+                </div>
+                <div class="rule-item">
+                        <div class="rule-title">Technology Experience</div>
+                        <div class="rule-description">
+                            To practically apply HTML5, CSS3, JavaScript and responsive design techniques 
+                            and use them in real projects.
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="text-align: center; padding: 40px;">
+        <a href="index.html" class="play-btn">Back to Home</a>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="games.html">Games</a>
+                <a href="features.html">Features</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <div class="responsible-gaming">
+                <h3>🛡️ Responsible Gaming</h3>
+                <p>If you think your gaming habits are problematic, seek help from appropriate specialists and take a break from gaming activities. This platform only offers demo games for entertainment purposes.</p>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Classic Fruit Slots. All rights reserved. | 18+ Age Restriction | Play Responsibly</p>
+                <p>This site is designed for demo purposes and has no real money risk.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const style = document.createElement('style');
+            style.textContent = `
+                @media (max-width: 992px) {
+                    .nav-links {
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        background: linear-gradient(90deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
+                        flex-direction: column;
+                        padding: 20px;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                        display: none;
+                    }
+                    
+                    .nav-links.active {
+                        display: flex !important;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        setTimeout(() => {
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(45deg, #ffd700, #ff6b35);
+                    color: #2c1810;
+                    padding: 30px;
+                    border-radius: 20px;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    text-align: center;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                    z-index: 1000;
+                    animation: bounce 0.5s ease;
+                ">
+                    👨‍💻 About developer 👨‍💻
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+        }, 1000);
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% { transform: translate(-50%, -50%) translateY(0); }
+                40% { transform: translate(-50%, -50%) translateY(-20px); }
+                60% { transform: translate(-50%, -50%) translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
