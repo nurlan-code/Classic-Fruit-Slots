@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Classic Fruit Slots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffd700 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: #ffd700;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo::before {
+            content: "🎰";
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .play-btn {
+            background: linear-gradient(45deg, #ff6b35, #ffd700);
+            color: #2c1810;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .desktop-play-btn {
+            display: block;
+        }
+        
+        .mobile-menu-buttons {
+            display: none;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            color: #ffd700;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        .mobile-menu.active {
+            color: #fff;
+            background: rgba(255, 215, 0, 0.3);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            color: #2c1810;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+            to { text-shadow: 2px 2px 20px rgba(255, 215, 0, 0.6); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .terms-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            margin: 0 auto;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terms-card::before {
+            content: "📋";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 150px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .terms-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .terms-card h2 {
+            color: #2c1810;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .terms-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(139, 69, 19, 0.1);
+            border-radius: 15px;
+            border-left: 6px solid #8b4513;
+            transition: all 0.3s ease;
+        }
+
+        .terms-section:hover {
+            transform: translateX(10px);
+            box-shadow: 0 12px 30px rgba(139, 69, 19, 0.2);
+        }
+
+        .terms-section h3 {
+            color: #8b4513;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .terms-section h3::before {
+            content: "⚖️";
+            margin-right: 15px;
+            font-size: 1.8rem;
+        }
+
+        .terms-section p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .terms-section ul {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .terms-section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: rgba(255, 107, 53, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #ff6b35;
+        }
+
+        .highlight-box h4 {
+            color: #ff6b35;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background: linear-gradient(90deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
+            color: #ffd700;
+            padding: 50px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        .responsible-gaming {
+            background: rgba(255, 107, 53, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #ff6b35;
+        }
+
+        .responsible-gaming h3 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #8b4513;
+            padding-top: 20px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 992px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(90deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                display: none;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: all 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                display: flex !important;
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 10px 0;
+                display: block;
+                text-align: center;
+            }
+            
+            .mobile-menu-buttons {
+                display: block;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 2px solid #ffd700;
+            }
+            
+            .mobile-menu-buttons .play-btn {
+                width: 100%;
+                text-align: center;
+                font-size: 1.1rem;
+                padding: 15px 20px;
+                margin: 0;
+            }
+            
+            .desktop-play-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">Classic Fruit Slots</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="mobile-menu-buttons">
+                    <a href="index.html" class="play-btn">Back to Home</a>
+                </li>
+            </ul>
+            <div class="desktop-play-btn">
+                <a href="index.html" class="play-btn">Back to Home</a>
+            </div>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">☰</div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>⚖️ Terms of Service</h1>
+        <p>Please read our terms and conditions carefully before using our platform</p>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="terms-card">
+                <div class="terms-content">
+                    <h2>Terms of Service</h2>
+                    
+                    <div class="highlight-box">
+                        <h4>📅 Last Updated: January 2025</h4>
+                        <p>These terms govern your use of our demo casino platform. By using our services, you agree to these terms.</p>
+                    </div>
+
+                    <div class="terms-section">
+                        <h3>1. Acceptance of Terms</h3>
+                        <p>By accessing and using Classic Fruit Slots platform, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+                        <ul>
+                            <li>You must be at least 18 years old to use this platform</li>
+                            <li>You agree to use the platform responsibly</li>
+                            <li>You understand this is a demo platform with no real money transactions</li>
+                        </ul>
+                    </div>
+
+                    <div class="terms-section">
+                        <h3>2. Demo Platform Nature</h3>
+                        <p>This platform is designed exclusively for entertainment and demonstration purposes. No real money gambling occurs on this platform.</p>
+                        <ul>
+                            <li>All games are in demo mode only</li>
+                            <li>No real money deposits or withdrawals</li>
+                            <li>No registration or account creation required</li>
+                            <li>All winnings are virtual and have no monetary value</li>
+                        </ul>
+                    </div>
+
+                    <div class="terms-section">
+                        <h3>3. User Responsibilities</h3>
+                        <p>Users are responsible for their behavior and use of the platform. You agree to:</p>
+                        <ul>
+                            <li>Use the platform only for lawful purposes</li>
+                            <li>Not attempt to hack, modify, or disrupt the platform</li>
+                            <li>Respect other users and maintain appropriate conduct</li>
+                            <li>Not use automated tools or bots to access the platform</li>
+                            <li>Report any bugs or issues through proper channels</li>
+                        </ul>
+                    </div>
+
+                    <div class="terms-section">
+                        <h3>4. Intellectual Property</h3>
+                        <p>All content, including but not limited to text, graphics, logos, images, and software, is the property of Classic Fruit Slots and is protected by copyright laws.</p>
+                        <ul>
+                            <li>You may not reproduce, distribute, or modify our content</li>
+                            <li>You may not use our trademarks without permission</li>
+                            <li>You may not reverse engineer our software</li>
+                        </ul>
+                    </div>
+
+                    <div class="terms-section">
+                        <h3>5. Privacy and Data</h3>
+                        <p>We respect your privacy and handle your data according to our Privacy Policy. Since this is a demo platform:</p>
+                        <ul>
+                            <li>We do not collect personal information</li>
+                            <li>No account creation or data storage required</li>
+                            <li>Anonymous usage for entertainment purposes only</li>
+                        </ul>
+                    </div>
+
+                    <div class="terms-section">
+                        <h3>6. Limitation of Liability</h3>
+                        <p>Classic Fruit Slots shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the platform.</p>
+                        <ul>
+                            <li>Platform provided "as is" without warranties</li>
+                            <li>No guarantee of continuous availability</li>
+                            <li>Users assume all risks of use</li>
+                        </ul>
+                    </div>
+
+                    <div class="terms-section">
+                        <h3>7. Prohibited Activities</h3>
+                        <p>The following activities are strictly prohibited:</p>
+                        <ul>
+                            <li>Attempting to gain unauthorized access to our systems</li>
+                            <li>Using the platform for illegal activities</li>
+                            <li>Spreading malware or harmful code</li>
+                            <li>Impersonating other users or entities</li>
+                            <li>Violating any applicable laws or regulations</li>
+                        </ul>
+                    </div>
+
+                    <div class="terms-section">
+                        <h3>8. Changes to Terms</h3>
+                        <p>We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting. Continued use of the platform constitutes acceptance of modified terms.</p>
+                    </div>
+
+                    <div class="terms-section">
+                        <h3>9. Termination</h3>
+                        <p>We may terminate or suspend your access to the platform at any time, without notice, for any reason, including violation of these terms.</p>
+                    </div>
+
+                    <div class="terms-section">
+                        <h3>10. Contact Information</h3>
+                        <p>If you have any questions about these Terms of Service, please contact us:</p>
+                        <ul>
+                            <li>Email: nurlanmammadli2@gmail.com</li>
+                            <li>LinkedIn: Visit our profile for professional contact</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>🛡️ Important Notice</h4>
+                        <p>This is a demo platform for entertainment purposes only. If you are experiencing gambling problems, please seek help from appropriate professionals and consider taking a break from gaming activities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="text-align: center; padding: 40px;">
+        <a href="index.html" class="play-btn">Back to Home</a>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="games.html">Games</a>
+                <a href="features.html">Features</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="responsible.html">Responsible Gaming</a>
+            </div>
+            
+            <div class="responsible-gaming">
+                <h3>🛡️ Responsible Gaming</h3>
+                <p>If you think your gaming habits are problematic, seek help from appropriate specialists and take a break from gaming activities. This platform only offers demo games for entertainment purposes.</p>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Classic Fruit Slots. All rights reserved. | 18+ Age Restriction | Play Responsibly</p>
+                <p>This site is designed for demo purposes and has no real money risk.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (navLinks) {
+                navLinks.classList.toggle('active');
+            }
+            
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('active');
+            }
+        }
+
+        function closeMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (navLinks) {
+                navLinks.classList.remove('active');
+            }
+            
+            if (mobileMenu) {
+                mobileMenu.classList.remove('active');
+            }
+        }
+
+        // Add event listener when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenu) {
+                mobileMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleMobileMenu();
+                });
+            }
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            });
+            
+            // Close menu when clicking on nav links
+            const navLinkItems = document.querySelectorAll('.nav-links a');
+            navLinkItems.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+        });
+
+        setTimeout(() => {
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(45deg, #ffd700, #ff6b35);
+                    color: #2c1810;
+                    padding: 30px;
+                    border-radius: 20px;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    text-align: center;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                    z-index: 1000;
+                    animation: bounce 0.5s ease;
+                ">
+                    ⚖️ Terms of Service ⚖️
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+        }, 1000);
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% { transform: translate(-50%, -50%) translateY(0); }
+                40% { transform: translate(-50%, -50%) translateY(-20px); }
+                60% { transform: translate(-50%, -50%) translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
