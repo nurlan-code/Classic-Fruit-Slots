@@ -94,6 +94,14 @@
             display: inline-block;
         }
 
+        .desktop-play-btn {
+            display: block;
+        }
+        
+        .mobile-menu-buttons {
+            display: none;
+        }
+
         .play-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
@@ -104,6 +112,19 @@
             color: #ffd700;
             font-size: 24px;
             cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        .mobile-menu.active {
+            color: #fff;
+            background: rgba(255, 215, 0, 0.3);
         }
 
         .hero {
@@ -350,33 +371,62 @@
             opacity: 0.8;
         }
 
-        @media (max-width: 1024px) {
-            .hero h1 { font-size: 3rem; }
-        }
-
         @media (max-width: 992px) {
-            .navbar { flex-direction: column; gap: 20px; }
-            .nav-links { gap: 20px; }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .mobile-menu { display: block; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.1rem; }
-            .features-grid { grid-template-columns: 1fr; }
-            .footer-links { flex-direction: column; gap: 20px; }
-        }
-
-        @media (max-width: 576px) {
-            .hero { padding: 40px 20px; }
-            .hero h1 { font-size: 2rem; }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 1.8rem; }
-            .navbar { padding: 0 15px; }
-            .logo { font-size: 24px; }
+            .mobile-menu {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(90deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                display: none;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: all 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                display: flex !important;
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 10px 0;
+                display: block;
+                text-align: center;
+            }
+            
+            .mobile-menu-buttons {
+                display: block;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 2px solid #ffd700;
+            }
+            
+            .mobile-menu-buttons .play-btn {
+                width: 100%;
+                text-align: center;
+                font-size: 1.1rem;
+                padding: 15px 20px;
+                margin: 0;
+            }
+            
+            .desktop-play-btn {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -390,9 +440,14 @@
                 <li><a href="features.html" style="color: #fff; text-shadow: 0 0 10px #ffd700;">Features</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li class="mobile-menu-buttons">
+                    <a href="index.html" class="play-btn">Back to Home</a>
+                </li>
             </ul>
-            <a href="index.html" class="play-btn">Back to Home</a>
-            <div class="mobile-menu">☰</div>
+            <div class="desktop-play-btn">
+                <a href="index.html" class="play-btn">Back to Home</a>
+            </div>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">☰</div>
         </nav>
     </header>
 
@@ -568,6 +623,9 @@
                 <a href="features.html">Features</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="responsible.html">Responsible Gaming</a>
             </div>
             
             <div class="responsible-gaming">
@@ -583,33 +641,57 @@
     </footer>
 
     <script>
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
+        // Mobile menu functionality
+        function toggleMobileMenu() {
             const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (navLinks) {
+                navLinks.classList.toggle('active');
+            }
+            
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('active');
+            }
+        }
 
+        function closeMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (navLinks) {
+                navLinks.classList.remove('active');
+            }
+            
+            if (mobileMenu) {
+                mobileMenu.classList.remove('active');
+            }
+        }
+
+        // Add event listener when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            const style = document.createElement('style');
-            style.textContent = `
-                @media (max-width: 992px) {
-                    .nav-links {
-                        position: absolute;
-                        top: 100%;
-                        left: 0;
-                        right: 0;
-                        background: linear-gradient(90deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
-                        flex-direction: column;
-                        padding: 20px;
-                        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-                        display: none;
-                    }
-                    
-                    .nav-links.active {
-                        display: flex !important;
-                    }
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenu) {
+                mobileMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleMobileMenu();
+                });
+            }
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    closeMobileMenu();
                 }
-            `;
-            document.head.appendChild(style);
+            });
+            
+            // Close menu when clicking on nav links
+            const navLinkItems = document.querySelectorAll('.nav-links a');
+            navLinkItems.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
         });
 
         setTimeout(() => {
